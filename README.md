@@ -33,6 +33,7 @@ My `tasks.json` file looks like this:
                 "--source", "../gamemodes/base.pwn", 
                 "--dump_dir", "gamemodes",
                 "--include_dir", "../includes",
+                "--usegit",
                 "--options", "d3, z+, ;+, (+",
                 "--verbose"
             ],
@@ -76,7 +77,8 @@ It grabs system name, system version, system arch, username and hostname, curren
 It also produces log after building, located in (also) pre-defined path, line 62.
 Log contains current date based on timestamp, hostname and username, time elapsed since program started till the end of compilation process and used arguments, also information if build succeded.
 Also, it prints some information to currently used terminal/console emulator.
-Pretty same as described earlier, system name, system arch, username and hostname, as well as date according to current timestamp, and count of lines. 
+Pretty same as described earlier, system name, system arch, username and hostname, as well as date according to current timestamp, and count of lines.
+In addition to all that it provides you with some basic versioning system thru git. Program itself gets last commit ID if you use switch (`-g`) to enable that. Obviously, you need to setup a git repository in order for that to work.
 
 # What are those arguments?
 Simple stuff, you can provide some stuff yourself. I will explain this here, but you can also just use `pawncc-ext.py -h`.
@@ -86,6 +88,7 @@ Simple stuff, you can provide some stuff yourself. I will explain this here, but
 - `-id/--include_dir`, path to includes.
 - `-v/--verbose`, whether to show information about building (like errors, warnings, or debug information).
 - `-o/--options`, additional arguments to build like `-d3`.
+- `-g/--usegit`, whether to use git interaction with repository (getting last commit ID hash).
 
 Script itself takes care of parsing those additional arguments and passing in correct format, so you just need to provide arguments without "-", like this: `d3, z+, ;+, (+`. 
 
